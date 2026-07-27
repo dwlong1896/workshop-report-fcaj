@@ -5,55 +5,28 @@ weight: 1
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
 ### Mục tiêu tuần 5:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Nắm vững khái niệm containerization, biết cách đóng gói và deploy ứng dụng bằng Docker.
+* Nắm vững tư duy Infrastructure as Code (IaC) để tự động hóa việc quản trị và khởi tạo hạ tầng.
+* Sử dụng AWS CloudFormation để deploy đồng loạt các tài nguyên AWS (Network, Compute, Database) thông qua template.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc                                                                                                                                                                                                                                                             | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
+| 2   | - Deploy Applications với Docker (Phần 1) <br>&emsp; + Tìm hiểu khái niệm Containerization, Docker Engine, Image, Dockerfile <br> - **Thực hành:** <br>&emsp; + Cài đặt Docker engine <br>&emsp; + Kéo (pull) và chạy thử các base image cơ bản                         | 29/06/2025   | 29/06/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Deploy Applications với Docker (Phần 2) <br>&emsp; + Quy trình build và run container <br> - **Thực hành:** <br>&emsp; + Viết Dockerfile đóng gói ứng dụng (VD: backend PHP/Spring Boot hoặc frontend ReactJS) <br>&emsp; + Build image và deploy container trên EC2 | 30/06/2025   | 30/06/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Initialize Infrastructure as Code với AWS CloudFormation (Phần 1) <br>&emsp; + Tìm hiểu tư duy IaC <br>&emsp; + Cấu trúc của CloudFormation Template (JSON/YAML) <br> - **Thực hành:** <br>&emsp; + Viết template cơ bản định nghĩa Parameters và Resources           | 01/07/2025   | 01/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Initialize IaC với AWS CloudFormation (Phần 2) <br>&emsp; + Khai báo network resources <br> - **Thực hành:** <br>&emsp; + Viết template để tự động deploy Custom VPC, Subnet, Internet Gateway và Security Group                                                    | 02/07/2025   | 02/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Initialize IaC với AWS CloudFormation (Phần 3) <br>&emsp; + Triển khai toàn bộ hệ thống <br> - **Thực hành:** <br>&emsp; + Khởi tạo một Stack hoàn chỉnh tự động deploy EC2 instance và RDS database thông qua script                                               | 03/07/2025   | 03/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 5:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Đóng gói ứng dụng thành công bằng Docker:
+  * Hiểu rõ lợi ích của containerization trong việc cô lập môi trường chạy code, đảm bảo tính đồng nhất giữa môi trường dev và production.
+  * Tự viết được Dockerfile đóng gói các ứng dụng thực tế (như Spring Boot, PHP, hoặc ReactJS) thành các Docker Image độc lập, loại bỏ triệt để lỗi xung đột môi trường khi deploy.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Tự động hóa hạ tầng đám mây với AWS CloudFormation (IaC):
+  * Chuyển đổi tư duy từ việc thao tác thủ công (click tay) trên AWS Console sang quản lý hạ tầng bằng code (Template).
+  * Khởi tạo thành công một CloudFormation Stack hoàn chỉnh, có khả năng dựng lại toàn bộ kiến trúc mạng (VPC) và máy chủ (EC2, RDS) một cách nhất quán chỉ bằng một thao tác chạy script tự động.

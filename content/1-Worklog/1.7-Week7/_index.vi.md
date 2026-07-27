@@ -5,55 +5,34 @@ weight: 1
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
 ### Mục tiêu tuần 7:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Nắm vững kiến trúc Microservices, biết cách thiết kế và phân tách một hệ thống Monolith thành các dịch vụ độc lập.
+* Làm quen với kiến trúc Serverless, xây dựng luồng xử lý tự động với AWS Lambda, Amazon S3 và DynamoDB.
+* Ứng dụng AWS Step Functions để orchestrate (điều phối) các business workflow phức tạp.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc                                                                                                                                                                                                                                                                                                         | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
+| 2   | - Create a Microservice <br>&emsp; + Tìm hiểu sự khác biệt giữa Monolithic và Microservices architecture <br> - **Thực hành:** <br>&emsp; + Thiết kế phương án tách một monolith application (ví dụ một backend lớn viết bằng Spring Boot hoặc PHP) thành các bounded contexts độc lập                            | 13/07/2025   | 13/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Serverless – Lambda & DynamoDB <br>&emsp; + Tìm hiểu Serverless compute (AWS Lambda) và NoSQL database (DynamoDB) <br> - **Thực hành:** <br>&emsp; + Khởi tạo table cơ bản trên DynamoDB <br>&emsp; + Viết một Lambda function (Hello World) đầu tiên                                                         | 14/07/2025   | 14/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Serverless – Lambda interacting với S3 <br>&emsp; + Tìm hiểu cơ chế Event-driven architecture <br> - **Thực hành:** <br>&emsp; + Cấu hình Event Trigger: Tự động kích hoạt Lambda function mỗi khi có file tĩnh được upload lên S3 bucket (có thể là file assets từ một frontend ReactJS hoặc file tài liệu) | 15/07/2025   | 15/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Tích hợp luồng Serverless hoàn chỉnh <br>&emsp; + Cách các serverless services giao tiếp bảo mật với nhau <br> - **Thực hành:** <br>&emsp; + Lập trình Lambda function để đọc metadata của file từ S3 event và thực thi lệnh write (ghi) record vào DynamoDB                                                  | 16/07/2025   | 16/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Getting Started với AWS Step Functions <br>&emsp; + Tìm hiểu State Machine và các orchestration step (Task, Choice, Parallel) <br> - **Thực hành:** <br>&emsp; + Tạo một workflow điều phối tuần tự nhiều Lambda functions để xử lý một logic nghiệp vụ phức tạp mà không bị timeout                          | 17/07/2025   | 17/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 7:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hình thành tư duy thiết kế hệ thống Microservices:
+  * Hiểu rõ ưu nhược điểm và cách chia nhỏ một hệ thống lớn (monolith) thành các services nhỏ, dễ dàng scale và maintain độc lập.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Chuyển dịch sang kiến trúc Serverless (Không máy chủ):
+  * Vận hành thành công các đoạn code backend thực thi logic (Lambda) mà không cần phải provision hay quản trị bất kỳ máy chủ EC2 nào.
+  * Tích hợp mượt mà cơ sở dữ liệu phi quan hệ (DynamoDB) với khả năng read/write ở tốc độ mili-giây.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Xây dựng thành công Event-Driven workflow:
+  * Tự động hóa hoàn toàn luồng xử lý dữ liệu: Hệ thống có khả năng detect ngay khi có file mới xuất hiện trên S3 để trigger code, sau đó tự động update data vào DynamoDB mà không cần sự can thiệp thủ công.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Orchestrate workflow với Step Functions:
+  * Biết cách kết nối và trực quan hóa các services rời rạc thành một business process liền mạch.
+  * Quản lý hoàn hảo các transaction dài và tích hợp retry mechanism (cơ chế tự thử lại) khi có lỗi xảy ra ở bất kỳ node nào trong hệ thống.

@@ -5,55 +5,32 @@ weight: 1
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
 ### Mục tiêu tuần 8:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Quản lý định danh, xác thực (Authentication) và phân quyền người dùng an toàn với Amazon Cognito.
+* Nắm vững các mô hình giao tiếp bất đồng bộ (asynchronous) để decouple các microservices.
+* Xây dựng kiến trúc xử lý đơn hàng (processing orders) có khả năng chịu tải cao bằng Amazon SQS và SNS.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc                                                                                                                                                                                                                                                                                    | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
+| 2   | - Serverless – Authentication với Amazon Cognito (Phần 1) <br>&emsp; + Tìm hiểu khái niệm User Pool và Identity Pool <br> - **Thực hành:** <br>&emsp; + Khởi tạo User Pool để quản lý danh sách user <br>&emsp; + Cấu hình các policy cho password và MFA (Multi-Factor Authentication)      | 20/07/2025   | 20/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 3   | - Serverless – Authentication với Amazon Cognito (Phần 2) <br>&emsp; + Tích hợp Cognito vào ứng dụng thực tế <br> - **Thực hành:** <br>&emsp; + Giả lập frontend (VD: ReactJS) gọi API đăng ký, đăng nhập <br>&emsp; + Xử lý và xác thực JWT token trả về từ Cognito                         | 21/07/2025   | 21/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Serverless – Message Queuing với Amazon SQS <br>&emsp; + Tìm hiểu Message Queue và lợi ích của việc decoupling <br> - **Thực hành:** <br>&emsp; + Tạo Standard Queue và FIFO Queue <br>&emsp; + Viết script gửi (send), nhận (receive) và xóa (delete) message trong Queue                 | 22/07/2025   | 22/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Serverless – Pub/Sub Messaging với Amazon SNS <br>&emsp; + Kiến trúc Publish/Subscribe <br> - **Thực hành:** <br>&emsp; + Tạo SNS Topic <br>&emsp; + Cấu hình Subscribe để tự động gửi Email notification khi có event mới publish vào Topic                                               | 23/07/2025   | 23/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Serverless – Processing orders với SQS và SNS <br>&emsp; + Mô hình Fanout architecture <br> - **Thực hành:** <br>&emsp; + Kết hợp SNS và SQS: Cấu hình SNS Topic đẩy message đồng loạt tới nhiều SQS Queues <br>&emsp; + Mô phỏng luồng backend tạo đơn hàng, thanh toán và gửi thông báo | 24/07/2025   | 24/07/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 8:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Quản lý Authentication chuẩn doanh nghiệp với Amazon Cognito:
+  * Xây dựng thành công luồng sign-up/sign-in hoàn chỉnh mà không cần tự build và maintain backend quản lý user (giúp tiết kiệm thời gian dev các tính năng như quên mật khẩu, verify email).
+  * Biết cách sử dụng JWT token để authorize các request gọi xuống API backend một cách an toàn.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Giải quyết bài toán nghẽn cổ chai (bottleneck) bằng Amazon SQS:
+  * Hiểu và áp dụng được cơ chế Message Queue để buffer (đệm) các request.
+  * Đảm bảo hệ thống (VD: các API Spring Boot/PHP) không bị crash hoặc drop data khi có lượng truy cập tăng đột biến, tăng tính fault tolerance (chịu lỗi).
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Triển khai kiến trúc Fanout Event-driven với Amazon SNS & SQS:
+  * Nắm vững mô hình Pub/Sub để broadcast thông tin cho nhiều services khác nhau cùng lúc.
+  * Tích hợp thành công một luồng order processing bất đồng bộ: Khi một đơn hàng được tạo (Publish vào SNS), sự kiện sẽ tự động rẽ nhánh (Fanout) ra nhiều SQS Queues để các worker xử lý thanh toán, trừ kho và gửi email song song.
