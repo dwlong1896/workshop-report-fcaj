@@ -31,4 +31,4 @@ pre: " <b> 1.6. </b> "
   * Nắm được quy trình restore, đảm bảo khả năng disaster recovery nhanh chóng và giữ tính toàn vẹn của dữ liệu khi hệ thống gặp sự cố.
 * Tối ưu hóa chi phí với Savings Plans và Reserved Instances:
   * Nắm vững các strategy tối ưu chi phí thông qua việc cam kết sử dụng với Savings Plans và Reserved Instances.
-  * Biết cách lựa chọn commitment plan phù hợp để giảm thiểu cost cho các workload dài hạn và ổn định, so với mức giá On-Demand mặc định.
+  * Biết lựa chọn commitment plan phù hợp để giảm thiểu cost cho các workload dài hạn và ổn định, so với mức giá On-Demand mặc định.
