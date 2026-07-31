@@ -6,18 +6,14 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
 
 # Summary Report: “GenAI-powered App-DB Modernization workshop”
 
 ### Event Objectives
-
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Final Competition of "Cloud Architect"
+- Securing Your Web Apps With AWS Security Agent
+- Introduction to Service Level Agreement (SLA) and Monitoring
+- A strategic roadmap to conquering the AWS Cloud Practitioner exam
 
 ### Speakers
 
