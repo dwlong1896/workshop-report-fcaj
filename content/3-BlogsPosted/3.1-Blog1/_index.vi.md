@@ -9,37 +9,37 @@ pre: " <b> 3.1. </b> "
 
 # Amazon S3 Vectors: Khi S3 học cách lưu trữ và tìm kiếm vector
 
-Nếu bạn từng build một ứng dụng RAG (Retrieval-Augmented Generation — kỹ thuật cho LLM "tra cứu" tài liệu ngoài rồi mới trả lời, thay vì chỉ dựa vào kiến thức đã học sẵn) hay một hệ thống semantic search, chắc hẳn bạn đã phải chọn nơi lưu vector embedding — bản biểu diễn số học của văn bản/ảnh/audio sao cho những nội dung có ý nghĩa gần nhau thì nằm gần nhau trong không gian vector. Ví dụ: embedding của câu "con mèo đang ngủ" sẽ nằm gần embedding của "chú mèo con nằm nghỉ" hơn là gần "báo cáo tài chính quý 3".
+Nếu bạn từng build một ứng dụng RAG hay một hệ thống semantic search, chắc hẳn bạn đã phải chọn nơi lưu vector embedding
 {{< figure
   src="/images/3.1.2.jpg"
   alt="Không gian vector SE"
   class="image-70"
   caption="Hình 1. Minh họa không gian vector của Sentence Embeddings."
 >}} 
-Vấn đề là: hầu hết vector database chuyên dụng (Pinecone, Milvus, hay cluster OpenSearch tự vận hành) được thiết kế để phục vụ query tốc độ cao, nên chúng giữ toàn bộ index trong bộ nhớ hoặc trên compute cluster luôn chạy — rất tốn kém khi bạn có hàng trăm triệu đến hàng tỷ vector nhưng phần lớn dữ liệu đó không được query thường xuyên (ví dụ: embedding của toàn bộ tài liệu nội bộ công ty, hay ảnh y tế lưu trữ nhiều năm).
+Vấn đề là hầu hết vector database chuyên dụng được thiết kế để phục vụ query tốc độ cao, nên chúng giữ toàn bộ index trong bộ nhớ hoặc trên compute cluster luôn chạy — rất tốn kém khi có hàng trăm triệu đến hàng tỷ vector nhưng phần lớn dữ liệu đó không được query thường xuyên (ví dụ: embedding của toàn bộ tài liệu nội bộ công ty, hay ảnh y tế lưu trữ nhiều năm).
 
-Amazon S3 Vectors (GA từ tháng 12/2025) sinh ra để giải quyết đúng bài toán này: biến S3 — vốn nổi tiếng rẻ và bền — thành nơi lưu trữ vector gốc, không cần dựng thêm cluster riêng.
+Amazon S3 Vectors sinh ra để giải quyết đúng bài toán này: biến S3 thành nơi lưu trữ vector gốc, không cần dựng thêm cluster riêng.
 
 ### 1. S3 Vectors là gì?
 
 S3 Vectors thêm một loại bucket hoàn toàn mới vào S3 — vector bucket — bên cạnh general purpose bucket, directory bucket và table bucket quen thuộc. Ba khái niệm cốt lõi:
 
 * Vector bucket: loại bucket chuyên biệt để lưu và query vector.
-* Vector index: bên trong vector bucket, bạn tổ chức dữ liệu thành các index (tương tự "table" trong database) — mỗi lần similarity search sẽ chạy trên một index cụ thể.
+* Vector index: bên trong vector bucket, bạn tổ chức dữ liệu thành các index — mỗi lần similarity search sẽ chạy trên một index cụ thể.
 * Vector: chính là embedding, kèm theo metadata (key-value, ví dụ: năm xuất bản, tác giả, danh mục) để lọc kết quả sau này.
 
-Điểm đáng chú ý về mặt kỹ thuật: ghi dữ liệu vào S3 Vectors là strongly consistent (đọc ngay lập tức thấy dữ liệu vừa ghi, không có độ trễ đồng bộ như một số hệ phân tán khác), và S3 tự động tối ưu lại cách lưu trữ vector theo thời gian để giữ chi phí thấp kể cả khi dataset phình to.
+Điểm đáng chú ý về mặt kỹ thuật: ghi dữ liệu vào S3 Vectors là strongly consistent, và S3 tự động tối ưu lại cách lưu trữ vector theo thời gian để giữ chi phí thấp kể cả khi dataset phình to.
 
-Về quy mô, một index hỗ trợ tới 2 tỷ vector, một bucket có thể chứa tới 10.000 index. Độ trễ query dao động từ dưới 1 giây (query không thường xuyên) đến khoảng 100ms (query tần suất cao hơn).
+Về quy mô, một index hỗ trợ tới 2 tỷ vector, một bucket có thể chứa tới 10.000 index. Độ trễ query dao động từ dưới 1 giây  đến khoảng 100ms.
 {{< figure
   src="/images/3.1.4.jpg"
   alt="Lưu trữ và truy vấn dữ liệu"
   class="image-70"
   caption="Hình 2. Quy trình lưu trữ và truy vấn dữ liệu trong Amazon S3 Vectors."
 >}} 
-### 2. Cơ chế tính phí — hiểu để không bị bất ngờ trên bill
+### 2. Cơ chế tính phí 
 
-Đây là phần mình thấy nhiều bạn mới dùng dễ hiểu nhầm nhất, vì S3 Vectors tính phí theo 3 đầu mục riêng biệt, khác hẳn với S3 thông thường:
+S3 Vectors tính phí theo 3 đầu mục riêng biệt, khác hẳn với S3 thông thường:
 
 a) Storage (lưu trữ)
 Kích thước một vector = vector data + metadata + key. Ví dụ một vector 1024 chiều (dimension — số lượng giá trị số học biểu diễn embedding đó, mô hình embedding phổ biến như Titan hay Cohere thường ra 1024 hoặc 1536 chiều): mỗi chiều tốn 4 byte → 1024 × 4 byte = 4KB dữ liệu vector thô, cộng thêm metadata và key mới ra tổng dung lượng tính phí.
@@ -112,8 +112,4 @@ Cảm ơn mọi người đã đọc! Bạn nào đã thử S3 Vectors cho proje
 * https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-s3-vectors-generally-available/
 * https://aws.amazon.com/s3/features/vectors
 
-...Hình ảnh...
-
 Link bài viết: https://www.facebook.com/groups/awsstudygroupfcj/permalink/2225204894911137/?rdid=cg8lX8UFeXdY4OIr#
-
-...Hướng dẫn...

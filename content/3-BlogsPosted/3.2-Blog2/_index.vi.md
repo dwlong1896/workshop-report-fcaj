@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 3.2. </b> "
 ---
 
-# Amazon Aurora DSQL: Database SQL phân tán "active-active", bỏ hẳn cơ chế khóa truyền thống
+# Amazon Aurora DSQL: Database SQL phân tán active-active, bỏ hẳn cơ chế khóa truyền thống
 
 Nếu từng phải chọn database cho một hệ thống cần chạy ở nhiều region cùng lúc, chắc bạn đã quen với bài toán kinh điển: muốn tốc độ và khả năng scale kiểu serverless thì chọn DynamoDB, nhưng phải học lại tư duy thiết kế (single-table design) và mất hẳn SQL; còn muốn giữ SQL quen thuộc thì chọn RDS/Aurora, nhưng triển khai active-active nhiều region với strong consistency (đảm bảo mọi region đọc/ghi đều thấy dữ liệu mới nhất, không có độ trễ đồng bộ) lại cực kỳ khó làm đúng.
 
-Amazon Aurora DSQL (GA từ 27/5/2025) là câu trả lời của AWS cho khoảng trống này — một database SQL serverless, phân tán, hỗ trợ active-active multi-region với strong consistency, nhưng đi kèm một vài đánh đổi kiến trúc mà theo mình bất kỳ ai định dùng cũng nên hiểu rõ trước khi bắt tay vào code.
+Amazon Aurora DSQL là câu trả lời của AWS cho khoảng trống này — một database SQL serverless, phân tán, hỗ trợ active-active multi-region với strong consistency, nhưng đi kèm một vài đánh đổi kiến trúc mà theo mình bất kỳ ai định dùng cũng nên hiểu rõ trước khi bắt tay vào code.
 {{< figure
   src="/images/3.2.1.jpg"
   alt="Tổng quan kiến trúc"
@@ -20,11 +20,11 @@ Amazon Aurora DSQL (GA từ 27/5/2025) là câu trả lời của AWS cho khoả
 
 ### 1. Aurora DSQL là gì?
 
-Nói ngắn gọn: đây là database tương thích PostgreSQL (dựa trên PostgreSQL 16 — dùng lại parser, planner, optimizer, type system gốc của PostgreSQL), nhưng tách hoàn toàn phần compute và storage ra kiến trúc phân tán "shared-nothing" (các node xử lý không chia sẻ trực tiếp bộ nhớ/đĩa với nhau, mà phối hợp qua giao thức phân tán).
+Nói ngắn gọn: đây là database tương thích PostgreSQL, nhưng tách hoàn toàn phần compute và storage ra kiến trúc phân tán "shared-nothing".
 
 Vài con số đáng chú ý:
-* SLA (Service Level Agreement — cam kết uptime tối thiểu) 99,99% cho cluster 1 region, 99,999% cho cluster nhiều region.
-* Không cần provision instance, không cần patch, scale tới 0 khi idle — đúng nghĩa serverless, khác với Aurora Serverless v2 (vốn vẫn cần một ACU tối thiểu luôn chạy).
+* SLA 99,99% cho cluster 1 region, 99,999% cho cluster nhiều region.
+* Không cần provision instance, không cần patch, scale tới 0 khi idle — đúng nghĩa serverless.
 * Tính phí theo DPU (Distributed Processing Unit) — đơn vị đo công xử lý phân tán, tương tự khái niệm "capacity unit" bạn đã quen ở Aurora Serverless v2, nhưng đo cho hạ tầng phân tán nhiều thành phần hơn — cộng với phí lưu trữ 0,33 USD/GB-tháng. Mỗi tháng có 100.000 DPU + 1GB storage miễn phí vĩnh viễn (không giới hạn 12 tháng như free tier thông thường), đủ cho môi trường dev hoặc app cá nhân traffic thấp.
 {{< figure
   src="/images/3.2.2.jpg"
@@ -89,8 +89,3 @@ Cảm ơn mọi người đã đọc! Bạn nào đã thử viết retry logic c
 * https://docs.aws.amazon.com/aurora-dsql/latest/userguide/working-with.html
 * https://docs.aws.amazon.com/aurora-dsql/latest/userguide/working-with-postgresql-compatibility-unsupported-features.html
 * https://aws.amazon.com/rds/aurora/dsql/pricing/
-...Hình ảnh...
-
-...Link...
-
-...Hướng dẫn...

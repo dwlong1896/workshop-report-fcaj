@@ -8,11 +8,11 @@ pre: " <b> 3. </b> "
 
 
 
-###  [Blog 1 - SESSION POLICIES IN AMAZON EKS POD IDENTITY](3.1-Blog1/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+###  [Blog 1 - Amazon S3 Vectors: When S3 learns to store and search vectors](3.1-Blog1/)
+This blog introduces the new Amazon S3 Vectors feature, which allows storing and querying vector embeddings directly on S3. The article analyzes the operational architecture, pricing mechanism, suitable use cases (such as RAG and semantic search), and compares when to use S3 Vectors instead of dedicated vector databases.
 
-###  [Blog 2 - ...](3.2-Blog2/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+###  [Blog 2 - Amazon Aurora DSQL: An active-active distributed SQL database, completely abandoning traditional locking mechanisms](3.2-Blog2/)
+This blog analyzes Amazon Aurora DSQL, a serverless distributed SQL database that supports multi-region active-active deployment. The article delves into the core differences of using Optimistic Concurrency Control (OCC) instead of traditional locking mechanisms, points to note when designing applications, and suitable application scenarios.
 
-###  [Blog 3 - ...](3.3-Blog3/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+###  [Blog 3 - AWS Cost Anomaly Detection: The gatekeeper that prevents unexpected AWS bills](3.3-Blog3/)
+This blog shares about AWS Cost Anomaly Detection (CAD), a free tool applying Machine Learning to monitor abnormal AWS costs. The article guides how to distinguish CAD from AWS Budgets, how to set up Monitors and alerts, along with useful advice for managing costs for personal and learning accounts.
