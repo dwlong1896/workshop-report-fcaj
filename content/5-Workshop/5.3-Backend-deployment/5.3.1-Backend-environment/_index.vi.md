@@ -36,7 +36,7 @@ Security Group của EC2 được cấu hình theo nguyên tắc:
 - Cho phép outbound cần thiết qua NAT Gateway để tải package và kết nối Amazon SES SMTP; kết nối RDS vẫn đi trong VPC.
 
 
-![Thông tin EC2 backend sau khi cấu hình](image.png)
+![Thông tin EC2 backend sau khi cấu hình](/images/5-Workshop/5.3-Backend-deployment/5.3.1-Backend-environment/backend-ec2.png)
 
 <p style="text-align: center;"><em>Hình 5.7. EC2 backend dùng IAM role và IMDSv2 trong cấu hình nền.</em></p>
 

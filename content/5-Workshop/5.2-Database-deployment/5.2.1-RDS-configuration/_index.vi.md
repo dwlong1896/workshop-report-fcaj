@@ -29,7 +29,7 @@ DB subnet group `ewallet-rds-subnet-group` gồm hai private subnet thuộc hai 
 <p style="text-align: center;"><em>Hình 5.4. DB subnet group sử dụng hai private subnet trên hai Availability Zone.</em></p>
 
 ## Kết quả tạo RDS MySQL
-![Trạng thái Amazon RDS MySQL của Cloud E-Wallet](image.png)
+![Trạng thái Amazon RDS MySQL của Cloud E-Wallet](/images/5-Workshop/5.2-Database-deployment/5.2.1-RDS-configuration/rds-status.png)
 
 <p style="text-align: center;"><em>Hình 5.5. RDS MySQL `ewallet-db` sử dụng instance class `db.t4g.micro` và ở trạng thái Available.</em></p>
 RDS instance của dự án có DB identifier `ewallet-db`, sử dụng MySQL Community và instance class `db.t4g.micro` tại Region Singapore. Sau khi khởi tạo, database chuyển sang trạng thái **Available**.

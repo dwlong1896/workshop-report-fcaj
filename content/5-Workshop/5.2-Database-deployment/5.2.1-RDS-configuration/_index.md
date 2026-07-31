@@ -30,7 +30,7 @@ The `ewallet-rds-subnet-group` DB subnet group contains two private subnets in `
 
 ## Amazon RDS for MySQL result
 
-![Cloud E-Wallet Amazon RDS MySQL status](image.png)
+![Cloud E-Wallet Amazon RDS MySQL status](/images/5-Workshop/5.2-Database-deployment/5.2.1-RDS-configuration/rds-status.png)
 
 <p style="text-align: center;"><em>Figure 5.5. RDS MySQL `ewallet-db` uses the `db.t4g.micro` instance class and is Available.</em></p>
 

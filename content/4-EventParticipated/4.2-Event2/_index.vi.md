@@ -18,11 +18,11 @@ pre: " <b> 4.2. </b> "
 
 - **Mr. Nguyen Gia Hung** - Head of Solutions Architect tại VietNam
 - **Mr. Joseph Marazota** - Head of technology of Asia
-- **Các team tham gia Hackathon**: OneTeam,  
+- **Các team tham gia Hackathon** 
 
 ### Nội Dung Nổi Bật
 
-#### Chatbot đặt hàng KFC qua hội thoại
+#### OneTeam - Chatbot đặt hàng KFC qua hội thoại
 - Chatbot đặt hàng đa kênh qua Zalo và WhatsApp, khách đặt món ngay trong khung chat
 - KDùng Bedrock **AgentCore**, **Tiny Fish** scrape dữ liệu menu từ website KFC lưu vào DynamoDB; có bước xác nhận đơn trước khi chốt để tránh lặp lại lỗi kiểu McDonald's.
 - Chi phí tương đối rẻ, độ trễ đầu-cuối chỉ 3-4 giây.
@@ -69,5 +69,6 @@ pre: " <b> 4.2. </b> "
 
 
 #### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
+![FCAJ x Agentic AI Build Week](/images/event2a.jpg)
+![FCAJ x Agentic AI Build Week](/images/event2b.jpg)
 > Sự kiện giúp em hiểu thêm về cuộc thi hackathon, nó không chỉ là cuộc thi công nghệ mà là hành trình trải nghiệm toàn diện: áp lực, mệt mỏi, tranh luận nhóm, niềm vui khi sản phẩm chạy được và tự hào khi trình bày trước giám khảo. Giá trị lớn nhất không chỉ nằm ở giải thưởng mà còn nằm ở bài học thực chiến về làm sản phẩm, làm việc nhóm và tư duy giải quyết vấn đề thực tế.

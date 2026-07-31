@@ -18,11 +18,11 @@ pre: " <b> 4.2. </b> "
 
 - **Mr. Nguyen Gia Hung** - Head of Solutions Architect in Vietnam
 - **Mr. Joseph Marazota** - Head of Technology of Asia
-- **Hackathon participating teams**: OneTeam,  
+- **Hackathon participating teams**
 
 ### Key Highlights
 
-#### KFC Order Chatbot via Conversation
+#### OneTeam - KFC Order Chatbot via Conversation
 - Multi-channel ordering chatbot via Zalo and WhatsApp, customers order directly within the chat window.
 - Uses Bedrock **AgentCore**, **Tiny Fish** to scrape menu data from the KFC website and save it to DynamoDB; includes an order confirmation step before finalizing to prevent repetitive errors like McDonald's.
 - Relatively cheap cost, end-to-end latency is only 3-4 seconds.
@@ -69,6 +69,6 @@ pre: " <b> 4.2. </b> "
 
 
 #### Some pictures from the event
-![Hackathon Event](/images/event2a.jpg)
+![FCAJ x Agentic AI Build Week](/images/event2a.jpg)
 ![FCAJ x Agentic AI Build Week](/images/event2b.jpg)
 > Overall, the event not only provided technical knowledge but also helped me change my mindset about application design, system modernization, and coordinating more effectively among teams.
