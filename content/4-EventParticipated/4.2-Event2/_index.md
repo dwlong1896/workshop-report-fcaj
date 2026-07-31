@@ -6,121 +6,69 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Summary Report: “FCAJ x Agentic AI Build Week”
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+### Purpose of the Event
 
-### Event Objectives
+- Sharing information and experience from the Hackathon competition
+- Introducing the products of the teams participating in the Hackathon
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
 
-### Speakers
+### List of Speakers
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Mr. Nguyen Gia Hung** - Head of Solutions Architect in Vietnam
+- **Mr. Joseph Marazota** - Head of Technology of Asia
+- **Hackathon participating teams**: OneTeam,  
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
-
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
-
-#### Transitioning to modern application architecture – Microservices
-
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
-
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
-
-#### Domain-Driven Design (DDD)
-
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
-
-#### Event-Driven Architecture
-
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
-
-### Key Takeaways
-
-#### Design Mindset
-
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
-
-#### Technical Architecture
-
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
-
-### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
-
+#### KFC Order Chatbot via Conversation
+- Multi-channel ordering chatbot via Zalo and WhatsApp, customers order directly within the chat window.
+- Uses Bedrock **AgentCore**, **Tiny Fish** to scrape menu data from the KFC website and save it to DynamoDB; includes an order confirmation step before finalizing to prevent repetitive errors like McDonald's.
+- Relatively cheap cost, end-to-end latency is only 3-4 seconds.
+#### Signal C – Competitor Strategy Analysis 
+- Multi-agent architecture collecting discrete signals (financial reports, news...) to synthesize competitor strategy information and estimate ROI.
+- Supervisor-agent architecture coordinating sub-agents, with a self-grading & retry mechanism before requiring human review.
+- Issue: Costs increase sharply due to dependence on third-party services.
+#### BL Team – Generating AWS Architecture from Natural Language
+- Solves the tight deadline pressure for Solution Architects: input requirements, AI draws the architecture, edits, exports pricing, and deploys automatically.
+- Has a mechanism to block unauthorized services right from the output; the challenge is ensuring consistent output.
+#### 3K – Crowd Monitoring with AI Cameras 
+- Uses YOLO + ByteTrack to detect, count people by area, alert when overloaded, and suggest coordination.
+- Lessons on cost optimization when choosing AI models.
+#### Six Pillar – Assisting Anti-Money Laundering Investigations for Banks
+- Solves the problem of 90-95% of alerts being false positives, reducing case processing time from ~3 hours to a few minutes.
+- 3-tier architecture: Fast Detection, Deep Investigation, Case Management 
+### What Was Learned
+ 
+#### Clearly Define Scope 
+- Avoid trying to include too many features.
+- Aim for a "just enough" MVP to prove the idea within a limited time.
+#### Prioritize Execution Over Theory
+- The product must run, so deploy it for real.
+#### Teamwork 
+- Debate the issue, no personal attacks.
+- Clear role division based on each person's strengths.
+#### Find the Right Practical Pain Point
+- Fancy technology is meaningless if it does not solve the actual business problem of the customer and the market.
+#### Cost Control and Hallucination Mitigation
+- Optimize costs right from the beginning.
+- Use double-checks and guardrails to reduce AI hallucinations.
+- Always keep humans in the decision loop.
+### Application to Work
+- Design systems following the supervisor-agent model coordinating specialized sub-agents instead of one agent doing everything.
+- Use pre-filtering and deep-processing architecture to optimize AI costs at scale.
+- Always design stopping points for human intervention on high-risk decisions.
 ### Event Experience
+ 
+#### Hackathon Atmosphere
+- The seniors brought an overnight working atmosphere, many funny moments while still maintaining an optimistic spirit. 
+- A never-give-up spirit despite many difficulties, members coming from various backgrounds, having to present to the judging panel in a short time.
+#### Lessons Learned
+- Through this, I learned that strong psychological preparation is as important as technical skills; boldly participate even without experience; networking is also a great value of hackathons.
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
-
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
-
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+#### Some pictures from the event
+![Hackathon Event](/images/event2a.jpg)
+![FCAJ x Agentic AI Build Week](/images/event2b.jpg)
+> Overall, the event not only provided technical knowledge but also helped me change my mindset about application design, system modernization, and coordinating more effectively among teams.
